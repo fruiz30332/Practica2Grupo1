@@ -13,7 +13,7 @@
 				"fileName": "33 - hospital-admissions.csv",
 				"fileSystem": "practica2grupo1"
 			},
-			"columnDelimiter": "\t",
+			"columnDelimiter": ",",
 			"rowDelimiter": "\n",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,

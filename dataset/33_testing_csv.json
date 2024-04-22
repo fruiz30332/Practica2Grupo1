@@ -1,5 +1,5 @@
 {
-	"name": "SourceDataset_x2r_copy3",
+	"name": "33_testing_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
