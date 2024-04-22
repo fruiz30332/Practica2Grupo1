@@ -21,55 +21,31 @@
 		},
 		"schema": [
 			{
-				"name": "indic_de,geo\\time",
+				"name": "country",
 				"type": "String"
 			},
 			{
-				"name": "2008 ",
+				"name": "indicator",
 				"type": "String"
 			},
 			{
-				"name": "2009 ",
+				"name": "date",
 				"type": "String"
 			},
 			{
-				"name": "2010 ",
+				"name": "year_week",
 				"type": "String"
 			},
 			{
-				"name": "2011 ",
+				"name": "value",
 				"type": "String"
 			},
 			{
-				"name": "2012 ",
+				"name": "source",
 				"type": "String"
 			},
 			{
-				"name": "2013 ",
-				"type": "String"
-			},
-			{
-				"name": "2014 ",
-				"type": "String"
-			},
-			{
-				"name": "2015 ",
-				"type": "String"
-			},
-			{
-				"name": "2016 ",
-				"type": "String"
-			},
-			{
-				"name": "2017 ",
-				"type": "String"
-			},
-			{
-				"name": "2018 ",
-				"type": "String"
-			},
-			{
-				"name": "2019 ",
+				"name": "url\r",
 				"type": "String"
 			}
 		]
