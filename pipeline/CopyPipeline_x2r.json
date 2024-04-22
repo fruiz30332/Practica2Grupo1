@@ -61,7 +61,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SourceDataset_x2r",
+						"referenceName": "20_population_by_age_tsv",
 						"type": "DatasetReference"
 					}
 				],
