@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "20 - population-by-age.tsv",
+				"fileName": "33 - testing.csv",
 				"fileSystem": "practica2grupo1"
 			},
 			"columnDelimiter": "\t",
