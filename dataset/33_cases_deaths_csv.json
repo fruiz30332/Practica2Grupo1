@@ -1,5 +1,5 @@
 {
-	"name": "DestinationDataset_x2r",
+	"name": "33_cases_deaths_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",

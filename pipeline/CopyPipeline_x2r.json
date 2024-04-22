@@ -67,7 +67,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DestinationDataset_x2r",
+						"referenceName": "33_cases_deaths_csv",
 						"type": "DatasetReference"
 					}
 				]
