@@ -99,7 +99,30 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> Testing",
 				"PopulationByAge derive(AgesID = split({indic_de,geo\\time},',')[1],",
-				"          CountryID = split({indic_de,geo\\time},',')[2]) ~> derivedColumn1"
+				"          CountryID = split({indic_de,geo\\time},',')[2],",
+				"          Population = toDecimal(replace({2008 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2009 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2010 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2011 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2012 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2013 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2014 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2015 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2016 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2017 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2018 },':',''))\r",
+				"+\r",
+				"toDecimal(replace({2019 },':',''))) ~> derivedColumn1"
 			]
 		}
 	}
