@@ -1,0 +1,100 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "20_population_by_age_tsv",
+						"type": "DatasetReference"
+					},
+					"name": "PopulationByAge"
+				},
+				{
+					"dataset": {
+						"referenceName": "33_cases_deaths_csv",
+						"type": "DatasetReference"
+					},
+					"name": "CasesDeaths"
+				},
+				{
+					"dataset": {
+						"referenceName": "33_hospital_admissions_csv",
+						"type": "DatasetReference"
+					},
+					"name": "HospitalAdmissions"
+				},
+				{
+					"dataset": {
+						"referenceName": "33_testing_csv",
+						"type": "DatasetReference"
+					},
+					"name": "Testing"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          {indic_de,geo\\time} as string,",
+				"          {2008 } as string,",
+				"          {2009 } as string,",
+				"          {2010 } as string,",
+				"          {2011 } as string,",
+				"          {2012 } as string,",
+				"          {2013 } as string,",
+				"          {2014 } as string,",
+				"          {2015 } as string,",
+				"          {2016 } as string,",
+				"          {2017 } as string,",
+				"          {2018 } as string,",
+				"          {2019 } as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> PopulationByAge",
+				"source(output(",
+				"          country as string,",
+				"          country_code as string,",
+				"          continent as string,",
+				"          population as string,",
+				"          indicator as string,",
+				"          daily_count as string,",
+				"          date as string,",
+				"          rate_14_day as string,",
+				"          source as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> CasesDeaths",
+				"source(output(",
+				"          country as string,",
+				"          indicator as string,",
+				"          date as string,",
+				"          year_week as string,",
+				"          value as string,",
+				"          source as string,",
+				"          {url\\r} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> HospitalAdmissions",
+				"source(output(",
+				"          country as string,",
+				"          country_code as string,",
+				"          year_week as string,",
+				"          new_cases as string,",
+				"          tests_done as string,",
+				"          population as string,",
+				"          testing_rate as string,",
+				"          positivity_rate as string,",
+				"          {testing_data_source\\r} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> Testing"
+			]
+		}
+	}
+}
