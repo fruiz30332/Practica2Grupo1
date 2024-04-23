@@ -100,29 +100,7 @@
 				"     ignoreNoFilesFound: false) ~> Testing",
 				"PopulationByAge derive(AgesID = split({indic_de,geo\\time},',')[1],",
 				"          CountryID = split({indic_de,geo\\time},',')[2],",
-				"          Population = toDecimal(iif(isNull(replace({2008 },':','')),'',{2008 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2009 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2010 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2011 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2012 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2013 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2014 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2015 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2016 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2017 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2018 }))\r",
-				"+\r",
-				"toDecimal(iif(isNull(replace({2008 },':','')),'',{2019 }))) ~> derivedColumn1"
+				"          Population = toDecimal(iif(isNull({2008 }),'0',replace(replace(replace(replace({2008 },':','0'),' ','0'),'p','0'),'b','0')))) ~> derivedColumn1"
 			]
 		}
 	}
