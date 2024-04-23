@@ -34,7 +34,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          {indic_de,geo\\time} as string,",
@@ -93,7 +97,9 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Testing"
+				"     ignoreNoFilesFound: false) ~> Testing",
+				"PopulationByAge derive(AgesID = split({indic_de,geo\\time},',')[1],",
+				"          CountryID = split({indic_de,geo\\time},',')[2]) ~> derivedColumn1"
 			]
 		}
 	}
