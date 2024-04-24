@@ -100,7 +100,29 @@
 				"     ignoreNoFilesFound: false) ~> Testing",
 				"PopulationByAge derive(AgesID = split({indic_de,geo\\time},',')[1],",
 				"          CountryID = split({indic_de,geo\\time},',')[2],",
-				"          Population = toDecimal(iif(isNull({2008 }),'0',replace(replace(replace(replace({2008 },':','0'),' ','0'),'p','0'),'b','0')))) ~> derivedColumn1"
+				"          Population = toDecimal(replace(replace(replace(replace({2008 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2009 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2010 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2011 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2012 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2013 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2014 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2015 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2016 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2017 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2018 },':','0'),' ','0'),'p','0'),'b','0'))\r",
+				"+\r",
+				"toDecimal(replace(replace(replace(replace({2019 },':','0'),' ','0'),'p','0'),'b','0'))) ~> derivedColumn1"
 			]
 		}
 	}
