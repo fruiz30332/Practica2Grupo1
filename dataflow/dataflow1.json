@@ -46,6 +46,9 @@
 				},
 				{
 					"name": "select2"
+				},
+				{
+					"name": "filter2"
 				}
 			],
 			"scriptLines": [
@@ -132,7 +135,8 @@
 				"toDecimal(replace(replace(replace(replace({2018 },':','0'),' ','0'),'p','0'),'b','0'))\r",
 				"+\r",
 				"toDecimal(replace(replace(replace(replace({2019 },':','0'),' ','0'),'p','0'),'b','0'))) ~> derivedColumn1",
-				"select2 filter(continent == 'Europe') ~> filter1",
+				"select2 filter(continent == 'Europe'\r",
+				") ~> filter1",
 				"derivedColumn1 select(mapColumn(",
 				"          AgesID,",
 				"          CountryID,",
@@ -150,7 +154,8 @@
 				"          date",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2"
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"filter1 filter(case_type == 'deaths') ~> filter2"
 			]
 		}
 	}
