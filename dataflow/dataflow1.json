@@ -46,6 +46,9 @@
 				},
 				{
 					"name": "select2"
+				},
+				{
+					"name": "pivot1"
 				}
 			],
 			"scriptLines": [
@@ -151,7 +154,15 @@
 				"          date",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2"
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"filter1 pivot(groupBy(country,",
+				"          country_code,",
+				"          population,",
+				"          date),",
+				"     pivotBy(case_type),",
+				"     Types = sum(toInteger(daily_count)),",
+				"     columnNaming: '$N$V',",
+				"     lateral: true) ~> pivot1"
 			]
 		}
 	}
