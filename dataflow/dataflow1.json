@@ -46,9 +46,6 @@
 				},
 				{
 					"name": "select2"
-				},
-				{
-					"name": "filter2"
 				}
 			],
 			"scriptLines": [
@@ -154,8 +151,7 @@
 				"          date",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2",
-				"filter1 filter(case_type == 'deaths') ~> filter2"
+				"     skipDuplicateMapOutputs: true) ~> select2"
 			]
 		}
 	}
