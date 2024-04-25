@@ -52,6 +52,9 @@
 				},
 				{
 					"name": "derivedColumn2"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -157,15 +160,22 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
-				"filter1 pivot(groupBy(country,",
+				"aggregate1 pivot(groupBy(country,",
 				"          country_code,",
 				"          population,",
 				"          {}),",
 				"     pivotBy(case_type),",
-				"     Types = sum(toInteger(daily_count)),",
+				"     Types = sum(toInteger(weekly_count)),",
 				"     columnNaming: '$N$V',",
 				"     lateral: true) ~> pivot1",
-				"select2 derive(WeekOfYear = weekOfYear(date)) ~> derivedColumn2"
+				"select2 derive(WeekOfYear = weekOfYear(date)) ~> derivedColumn2",
+				"filter1 aggregate(groupBy(country,",
+				"          country_code,",
+				"          continent,",
+				"          population,",
+				"          case_type,",
+				"          WeekOfYear),",
+				"     weekly_count = sum(daily_count)) ~> aggregate1"
 			]
 		}
 	}
