@@ -163,7 +163,7 @@
 				"aggregate1 pivot(groupBy(country,",
 				"          country_code,",
 				"          population,",
-				"          {}),",
+				"          WeekOfYear),",
 				"     pivotBy(case_type),",
 				"     Types = sum(toInteger(weekly_count)),",
 				"     columnNaming: '$N$V',",
