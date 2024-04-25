@@ -58,6 +58,12 @@
 				},
 				{
 					"name": "derivedColumn3"
+				},
+				{
+					"name": "select3"
+				},
+				{
+					"name": "pivot2"
 				}
 			],
 			"scriptLines": [
@@ -168,7 +174,7 @@
 				"          population,",
 				"          WeekOfYear),",
 				"     pivotBy(case_type),",
-				"     Types = sum(toInteger(weekly_count)),",
+				"     Type = sum(toInteger(weekly_count)),",
 				"     columnNaming: '$N_$V',",
 				"     lateral: true) ~> pivot1",
 				"select2 derive(WeekOfYear = weekOfYear(date)) ~> derivedColumn2",
@@ -179,7 +185,21 @@
 				"          case_type,",
 				"          WeekOfYear),",
 				"     weekly_count = sum(daily_count)) ~> aggregate1",
-				"HospitalAdmissions derive(WeekOfYear = weekOfYear(date)) ~> derivedColumn3"
+				"HospitalAdmissions derive(WeekOfYear = weekOfYear(date)) ~> derivedColumn3",
+				"derivedColumn3 select(mapColumn(",
+				"          country,",
+				"          indicator,",
+				"          count = value,",
+				"          WeekOfYear",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select3",
+				"select3 pivot(groupBy(country,",
+				"          WeekOfYear),",
+				"     pivotBy(indicator),",
+				"     Indicator = sum(count),",
+				"     columnNaming: '$N_$V',",
+				"     lateral: true) ~> pivot2"
 			]
 		}
 	}
