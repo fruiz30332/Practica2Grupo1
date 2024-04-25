@@ -166,7 +166,7 @@
 				"          WeekOfYear),",
 				"     pivotBy(case_type),",
 				"     Types = sum(toInteger(weekly_count)),",
-				"     columnNaming: '$N$V',",
+				"     columnNaming: '$N_$V',",
 				"     lateral: true) ~> pivot1",
 				"select2 derive(WeekOfYear = weekOfYear(date)) ~> derivedColumn2",
 				"filter1 aggregate(groupBy(country,",
