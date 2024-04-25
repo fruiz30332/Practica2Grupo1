@@ -6,79 +6,25 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "20_population_by_age_tsv",
-						"type": "DatasetReference"
-					},
-					"name": "PopulationByAge"
-				},
-				{
-					"dataset": {
 						"referenceName": "33_cases_deaths_csv",
 						"type": "DatasetReference"
 					},
 					"name": "CasesDeaths"
-				},
-				{
-					"dataset": {
-						"referenceName": "33_hospital_admissions_csv",
-						"type": "DatasetReference"
-					},
-					"name": "HospitalAdmissions"
-				},
-				{
-					"dataset": {
-						"referenceName": "33_testing_csv",
-						"type": "DatasetReference"
-					},
-					"name": "Testing"
 				}
 			],
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "derivedColumn1"
-				},
-				{
 					"name": "filter1"
-				},
-				{
-					"name": "select1"
 				},
 				{
 					"name": "select2"
 				},
 				{
 					"name": "pivot1"
-				},
-				{
-					"name": "derivedColumn3"
-				},
-				{
-					"name": "select3"
-				},
-				{
-					"name": "pivot2"
 				}
 			],
 			"scriptLines": [
-				"source(output(",
-				"          {indic_de,geo\\time} as string,",
-				"          {2008 } as string,",
-				"          {2009 } as string,",
-				"          {2010 } as string,",
-				"          {2011 } as string,",
-				"          {2012 } as string,",
-				"          {2013 } as string,",
-				"          {2014 } as string,",
-				"          {2015 } as string,",
-				"          {2016 } as string,",
-				"          {2017 } as string,",
-				"          {2018 } as string,",
-				"          {2019 } as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> PopulationByAge",
 				"source(output(",
 				"          country as string,",
 				"          country_code as string,",
@@ -93,65 +39,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> CasesDeaths",
-				"source(output(",
-				"          country as string,",
-				"          indicator as string,",
-				"          date as date,",
-				"          year_week as string,",
-				"          value as double,",
-				"          source as string,",
-				"          {url\\r} as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> HospitalAdmissions",
-				"source(output(",
-				"          country as string,",
-				"          country_code as string,",
-				"          year_week as string,",
-				"          new_cases as string,",
-				"          tests_done as string,",
-				"          population as string,",
-				"          testing_rate as string,",
-				"          positivity_rate as string,",
-				"          {testing_data_source\\r} as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> Testing",
-				"PopulationByAge derive(AgesID = split({indic_de,geo\\time},',')[1],",
-				"          CountryID = split({indic_de,geo\\time},',')[2],",
-				"          Population = toDecimal(replace(replace(replace(replace({2008 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2009 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2010 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2011 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2012 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2013 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2014 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2015 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2016 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2017 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2018 },':','0'),' ','0'),'p','0'),'b','0'))\r",
-				"+\r",
-				"toDecimal(replace(replace(replace(replace({2019 },':','0'),' ','0'),'p','0'),'b','0'))) ~> derivedColumn1",
 				"select2 filter(continent == 'Europe') ~> filter1",
-				"derivedColumn1 select(mapColumn(",
-				"          AgesID,",
-				"          CountryID,",
-				"          Population",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
 				"CasesDeaths select(mapColumn(",
 				"          country,",
 				"          country_code,",
@@ -170,22 +58,7 @@
 				"     pivotBy(case_type),",
 				"     count = sum(toInteger(daily_count)),",
 				"     columnNaming: '$V_$N',",
-				"     lateral: true) ~> pivot1",
-				"HospitalAdmissions derive(WeekOfYear = weekOfYear(date)) ~> derivedColumn3",
-				"derivedColumn3 select(mapColumn(",
-				"          country,",
-				"          indicator,",
-				"          count = value,",
-				"          WeekOfYear",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select3",
-				"select3 pivot(groupBy(country,",
-				"          WeekOfYear),",
-				"     pivotBy(indicator),",
-				"     Indicator = sum(count),",
-				"     columnNaming: '$N_$V',",
-				"     lateral: true) ~> pivot2"
+				"     lateral: true) ~> pivot1"
 			]
 		}
 	}
