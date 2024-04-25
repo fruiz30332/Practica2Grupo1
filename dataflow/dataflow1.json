@@ -12,7 +12,15 @@
 					"name": "CasesDeaths"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Destination_csv",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "filter1"
@@ -58,7 +66,29 @@
 				"     pivotBy(case_type),",
 				"     count = sum(toInteger(daily_count)),",
 				"     columnNaming: '$V_$N',",
-				"     lateral: true) ~> pivot1"
+				"     lateral: true) ~> pivot1",
+				"pivot1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          {indic_de,geo\\time} as string,",
+				"          {2008 } as string,",
+				"          {2009 } as string,",
+				"          {2010 } as string,",
+				"          {2011 } as string,",
+				"          {2012 } as string,",
+				"          {2013 } as string,",
+				"          {2014 } as string,",
+				"          {2015 } as string,",
+				"          {2016 } as string,",
+				"          {2017 } as string,",
+				"          {2018 } as string,",
+				"          {2019 } as string",
+				"     ),",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
