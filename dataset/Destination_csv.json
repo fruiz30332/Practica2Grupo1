@@ -1,5 +1,5 @@
 {
-	"name": "SourceDataset_x2r_copy1",
+	"name": "Destination_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage1",
@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "20 - population-by-age.tsv",
+				"fileName": "Resultados.csv",
+				"folderPath": "Resultados",
 				"fileSystem": "practica2grupo1"
 			},
 			"columnDelimiter": "\t",
