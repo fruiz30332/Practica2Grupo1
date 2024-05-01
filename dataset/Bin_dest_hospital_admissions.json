@@ -1,0 +1,19 @@
+{
+	"name": "Bin_dest_hospital_admissions",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStoragePractica2Grupo1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "33 - hospital-admissions.csv",
+				"folderPath": "Origen",
+				"fileSystem": "practica2grupo1"
+			}
+		}
+	}
+}

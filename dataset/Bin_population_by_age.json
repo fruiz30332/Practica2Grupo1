@@ -1,0 +1,17 @@
+{
+	"name": "Bin_population_by_age",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "blasillo/PAD-COVID-19/blob/main/20%20-%20population-by-age.tsv"
+			}
+		}
+	}
+}

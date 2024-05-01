@@ -1,0 +1,17 @@
+{
+	"name": "Bin_cases_deaths",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServer1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "blasillo/PAD-COVID-19/main/33%20-%20testing.csv"
+			}
+		}
+	}
+}
