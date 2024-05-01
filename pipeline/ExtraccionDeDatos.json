@@ -54,7 +54,7 @@
 					{
 						"activity": "33-cases-deaths-csv",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -106,7 +106,7 @@
 					{
 						"activity": "20-population-by-age-tsv",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
@@ -158,7 +158,7 @@
 					{
 						"activity": "33-hospital-admissions-csv",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
