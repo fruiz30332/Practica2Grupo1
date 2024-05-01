@@ -29,15 +29,7 @@
 				"type": "String"
 			},
 			{
-				"name": "year_week",
-				"type": "String"
-			},
-			{
-				"name": "new_cases",
-				"type": "String"
-			},
-			{
-				"name": "tests_done",
+				"name": "continent",
 				"type": "String"
 			},
 			{
@@ -45,15 +37,23 @@
 				"type": "String"
 			},
 			{
-				"name": "testing_rate",
+				"name": "indicator",
 				"type": "String"
 			},
 			{
-				"name": "positivity_rate",
+				"name": "daily_count",
 				"type": "String"
 			},
 			{
-				"name": "testing_data_source",
+				"name": "date",
+				"type": "String"
+			},
+			{
+				"name": "rate_14_day",
+				"type": "String"
+			},
+			{
+				"name": "source",
 				"type": "String"
 			}
 		]
