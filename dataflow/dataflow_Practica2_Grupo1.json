@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "33_cases_deaths_csv",
+						"referenceName": "cases_deaths_csv",
 						"type": "DatasetReference"
 					},
 					"name": "CasesDeaths"
@@ -40,13 +40,13 @@
 				"source(output(",
 				"          country as string,",
 				"          country_code as string,",
-				"          continent as string,",
-				"          population as integer,",
-				"          indicator as string,",
-				"          daily_count as short,",
-				"          date as date,",
-				"          rate_14_day as double,",
-				"          source as string",
+				"          year_week as string,",
+				"          new_cases as string,",
+				"          tests_done as string,",
+				"          population as string,",
+				"          testing_rate as string,",
+				"          positivity_rate as string,",
+				"          testing_data_source as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
