@@ -11,6 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "33 - cases-deaths.csv",
+				"folderPath": "Origen",
 				"fileSystem": "practica2grupo1"
 			},
 			"columnDelimiter": ",",
