@@ -260,7 +260,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "HttpServerLocation",
-						"relativeUrl": "blasillo/PAD-COVID-19/blob/main/20%20-%20population-by-age.tsv"
+						"relativeUrl": "blasillo/PAD-COVID-19/main/20%20-%20population-by-age.tsv"
 					}
 				}
 			},
@@ -282,7 +282,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "HttpServerLocation",
-						"relativeUrl": "blasillo/PAD-COVID-19/blob/main/33%20-%20testing.csv"
+						"relativeUrl": "blasillo/PAD-COVID-19/main/33%20-%20testing.csv"
 					}
 				}
 			},
@@ -304,7 +304,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "HttpServerLocation",
-						"relativeUrl": "blasillo/PAD-COVID-19/blob/main/33%20-%20hospital-admissions.csv"
+						"relativeUrl": "blasillo/PAD-COVID-19/main/33%20-%20hospital-admissions.csv"
 					}
 				}
 			},
@@ -550,7 +550,7 @@
 							{
 								"activity": "33-cases-deaths-csv",
 								"dependencyConditions": [
-									"Succeeded"
+									"Completed"
 								]
 							}
 						],
@@ -604,7 +604,7 @@
 							{
 								"activity": "20-population-by-age-tsv",
 								"dependencyConditions": [
-									"Succeeded"
+									"Completed"
 								]
 							}
 						],
@@ -658,7 +658,7 @@
 							{
 								"activity": "33-hospital-admissions-csv",
 								"dependencyConditions": [
-									"Succeeded"
+									"Completed"
 								]
 							}
 						],
