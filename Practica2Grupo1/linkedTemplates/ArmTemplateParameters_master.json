@@ -17,6 +17,9 @@
 		"AzureDataLakeStoragePractica2Grupo1_properties_typeProperties_url": {
 			"value": "https://practica2grupo1.dfs.core.windows.net/"
 		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://raw.githubusercontent.com/"
+		},
 		"containerUri": {
 			"value": ""
 		},

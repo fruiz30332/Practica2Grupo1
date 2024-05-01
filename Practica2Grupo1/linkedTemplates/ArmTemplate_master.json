@@ -23,6 +23,10 @@
 			"type": "string",
 			"defaultValue": "https://practica2grupo1.dfs.core.windows.net/"
 		},
+		"HttpServer1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://raw.githubusercontent.com/"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI de la cuenta de almacenamiento que contiene las plantillas de ARM vinculadas."
@@ -61,6 +65,9 @@
 					},
 					"AzureDataLakeStoragePractica2Grupo1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStoragePractica2Grupo1_properties_typeProperties_url')]"
+					},
+					"HttpServer1_properties_typeProperties_url": {
+						"value": "[parameters('HttpServer1_properties_typeProperties_url')]"
 					}
 				}
 			},
