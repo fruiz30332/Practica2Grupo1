@@ -767,6 +767,9 @@
 						},
 						{
 							"name": "pivot1"
+						},
+						{
+							"name": "derivedColumn1"
 						}
 					],
 					"scriptLines": [
@@ -787,12 +790,12 @@
 						"     partitionBy('hash', 1)) ~> CasesDeaths",
 						"select2 filter(continent == 'Europe',",
 						"     partitionBy('hash', 1)) ~> filter1",
-						"CasesDeaths select(mapColumn(",
+						"derivedColumn1 select(mapColumn(",
 						"          country,",
 						"          country_code,",
 						"          continent,",
 						"          population,",
-						"          case_type = indicator,",
+						"          case_type = indicator_type,",
 						"          daily_count,",
 						"          date",
 						"     ),",
@@ -808,6 +811,7 @@
 						"     columnNaming: '$V_$N',",
 						"     lateral: true,",
 						"     partitionBy('hash', 1)) ~> pivot1",
+						"CasesDeaths derive(indicator_type = replace(indicator, \"confirmed cases\", \"confirmed_cases\")) ~> derivedColumn1",
 						"pivot1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     input(",
