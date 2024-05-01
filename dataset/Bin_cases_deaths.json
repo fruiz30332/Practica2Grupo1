@@ -1,5 +1,5 @@
 {
-	"name": "Binary1",
+	"name": "Bin_cases_deaths",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "HttpServer1",

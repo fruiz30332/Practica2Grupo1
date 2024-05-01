@@ -25,11 +25,24 @@
 							"type": "BinaryReadSettings"
 						}
 					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings",
+							"copyBehavior": "FlattenHierarchy"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "Binary1",
+						"referenceName": "Bin_cases_deaths",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Bin_dest_cases_deaths",
 						"type": "DatasetReference"
 					}
 				]
