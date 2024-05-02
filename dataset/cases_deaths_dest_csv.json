@@ -1,5 +1,5 @@
 {
-	"name": "cases_deaths_csv",
+	"name": "cases_deaths_dest_csv",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStoragePractica2Grupo1",
