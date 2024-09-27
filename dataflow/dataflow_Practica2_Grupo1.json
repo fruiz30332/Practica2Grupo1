@@ -1,0 +1,104 @@
+{
+	"name": "dataflow_Practica2_Grupo1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "dest_cases_deaths_csv",
+						"type": "DatasetReference"
+					},
+					"name": "CasesDeaths"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Destination_csv",
+						"type": "DatasetReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "AzureDataLakeStoragePractica2Grupo1",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [
+				{
+					"name": "filter1"
+				},
+				{
+					"name": "select2"
+				},
+				{
+					"name": "pivot1"
+				},
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          country as string,",
+				"          country_code as string,",
+				"          continent as string,",
+				"          population as string,",
+				"          indicator as string,",
+				"          daily_count as string,",
+				"          date as string,",
+				"          rate_14_day as string,",
+				"          source as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     partitionBy('hash', 1)) ~> CasesDeaths",
+				"select2 filter(continent == 'Europe',",
+				"     partitionBy('hash', 1)) ~> filter1",
+				"derivedColumn1 select(mapColumn(",
+				"          country,",
+				"          country_code,",
+				"          continent,",
+				"          population,",
+				"          case_type = indicator_type,",
+				"          daily_count,",
+				"          date",
+				"     ),",
+				"     partitionBy('hash', 1),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"filter1 pivot(groupBy(country,",
+				"          country_code,",
+				"          population,",
+				"          date),",
+				"     pivotBy(case_type),",
+				"     count = sum(toInteger(daily_count)),",
+				"     columnNaming: '$V_$N',",
+				"     lateral: true,",
+				"     partitionBy('hash', 1)) ~> pivot1",
+				"CasesDeaths derive(indicator_type = replace(indicator, \"confirmed cases\", \"confirmed_cases\"),",
+				"     partitionBy('hash', 1)) ~> derivedColumn1",
+				"pivot1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          country as string,",
+				"          country_code as string,",
+				"          population as string,",
+				"          date as string,",
+				"          {confirmed cases_count} as string,",
+				"          deaths_count as string",
+				"     ),",
+				"     partitionFileNames:['Destination.csv'],",
+				"     truncate: true,",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}
